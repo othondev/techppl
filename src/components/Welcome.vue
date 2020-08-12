@@ -1,0 +1,25 @@
+<template>
+  <v-container>
+    <p class="text-center font-weight-medium ">
+      Welcome to my Developer Coding Test.
+    </p>
+    <p class="text-center font-weight-medium ">
+      After check if please visit my
+      linkedin or call me I am completly available to answer any question that
+      you could have.
+    </p>
+    <p class="text-center font-weight-medium ">
+      <a :href="myLinkedin"> My Linkedin </a>
+    </p>
+  </v-container>
+</template>
+
+<script>
+export default {
+  name: "Welcome",
+
+  data: () => ({
+      myLinkedin: "https://www.linkedin.com/in/othon-ferreira-b0b6a888/"
+    }),
+};
+</script>
