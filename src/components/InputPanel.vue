@@ -1,21 +1,21 @@
 <template>
-  <v-container>
-    <v-card color="#385F73" dark>
-      <v-card-title class="headline">
-        {{ instructions }}
-      </v-card-title>
+  <v-container class="grey lighten-5">
+    <v-text-field
+      v-model="model"
+      :label="instructions"
+      v-on:keyup.enter="(e,d)=> output.push(e.target.value)"
+    ></v-text-field>
+    <v-card height="400" color="#385F73" dark :disabled="disabled">
 
-      <v-card-subtitle
-        >Listen to your favorite artists and albums whenever and wherever,
-        online and offline.</v-card-subtitle
-      >
+      <v-card-subtitle v-for="out in output" :key="out" :disabled="disabled">
+        >> {{ out }}
+      </v-card-subtitle>
 
-      <v-card-actions>
-        <v-btn text>
-          {{ status }}
-        </v-btn>
-      </v-card-actions>
+      <v-card-actions> </v-card-actions>
     </v-card>
+    <v-btn text large color="primary" @click="disabled = !disabled">
+      {{ status }}
+    </v-btn>
   </v-container>
 </template>
 
@@ -23,8 +23,15 @@
 export default {
   name: "InputPanel",
   data: () => ({
-    instructions: "Please input the number of time in seconds between emitting numbers and their frequency",
-    status: "Resume",
+    instructions:
+      "Please input the number of time in seconds between emitting numbers and their frequency",
+    output: [],
+    disabled: false,
   }),
+  computed: {
+    status: function() {
+      return this.disabled ? "RESUME" : "HALT";
+    },
+  },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="grey lighten-2">
     <p class="text-center font-weight-medium ">
       Welcome to my Developer Coding Test.
     </p>
