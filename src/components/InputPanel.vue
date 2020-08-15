@@ -23,7 +23,7 @@
       :disabled="disabled"
     >
       <v-card-subtitle
-        v-for="(out, index) in numbers"
+        v-for="(out, index) in output"
         :key="index"
         :disabled="disabled"
       >
@@ -32,13 +32,19 @@
 
       <v-card-actions> </v-card-actions>
     </v-card>
-    <v-btn text large color="primary" @click="disabled = !disabled">
-      {{ status }}
-    </v-btn>
+    <v-card class="d-flex mb-6">
+      <v-btn text large color="primary" @click="stopOrResume">
+        {{ status }}
+      </v-btn>
+      <v-chip class="ma-2 ml-auto">
+        {{ secondsRemain }}
+      </v-chip>
+    </v-card>
   </v-container>
 </template>
 
 <script>
+import FibonacciFinder from "../service/fibonacciFinder";
 const instructions = {
   start:
     "Please input the number of time in seconds between emitting numbers and their frequency",
@@ -48,7 +54,9 @@ const instructions = {
 export default {
   name: "InputPanel",
   data: () => ({
-    numbers: [],
+    fibonacciFinder: {},
+    numbers: new Map(),
+    output: [],
     valid: false,
     disabled: false,
     input: "",
@@ -67,19 +75,38 @@ export default {
         return instructions.nextNumber;
       }
     },
+    secondsRemain: function() {
+      const secs = this.fibonacciFinder.secondsRemain || 0;
+      return ("" + secs).padStart(2, "0");
+    },
   },
   methods: {
+    stopOrResume: function() {
+      if(this.disabled){
+        this.fibonacciFinder.resumeTimer()
+      }else{
+        this.fibonacciFinder.pauseTimer()
+      }
+      this.disabled = !this.disabled
+    },
     submit: function() {
       const isFormValid = this.$refs.form.validate();
       if (isFormValid) {
         if (!this.frequency) {
           this.frequency = this.input;
+          this.fibonacciFinder = new FibonacciFinder(
+            this.input,
+            this.addOutput
+          );
         } else {
-          this.numbers.push(this.input);
+          this.fibonacciFinder.addNumber(this.input);
         }
         this.$refs.form.reset();
       }
     },
+    addOutput: function(out){
+      this.output.unshift(out)
+    }
   },
 };
 </script>
