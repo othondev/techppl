@@ -55,7 +55,7 @@ export default {
   name: "InputPanel",
   data: () => ({
     fibonacciFinder: {},
-    numbers: new Map(),
+    couter: 0,
     output: [],
     valid: false,
     disabled: false,
@@ -69,7 +69,7 @@ export default {
     instruction: function() {
       if (!this.frequency) {
         return instructions.start;
-      } else if (this.numbers.length === 0) {
+      } else if (this.couter === 0) {
         return instructions.firstNumber;
       } else {
         return instructions.nextNumber;
@@ -82,12 +82,12 @@ export default {
   },
   methods: {
     stopOrResume: function() {
-      if(this.disabled){
-        this.fibonacciFinder.resumeTimer()
-      }else{
-        this.fibonacciFinder.pauseTimer()
+      if (this.disabled) {
+        this.fibonacciFinder.resumeTimer();
+      } else {
+        this.fibonacciFinder.pauseTimer();
       }
-      this.disabled = !this.disabled
+      this.disabled = !this.disabled;
     },
     submit: function() {
       const isFormValid = this.$refs.form.validate();
@@ -99,14 +99,15 @@ export default {
             this.addOutput
           );
         } else {
+          this.couter++;
           this.fibonacciFinder.addNumber(this.input);
         }
         this.$refs.form.reset();
       }
     },
-    addOutput: function(out){
-      this.output.unshift(out)
-    }
+    addOutput: function(out) {
+      this.output.unshift(out);
+    },
   },
 };
 </script>
