@@ -1,13 +1,24 @@
 <template>
   <v-container class="grey lighten-5">
     <v-text-field
-      v-model="model"
+      v-model="input"
       :label="instructions"
-      v-on:keyup.enter="(e,d)=> output.push(e.target.value)"
+      type="number"
+      v-on:keyup.enter="submit"
+      required
     ></v-text-field>
-    <v-card height="400" color="#385F73" dark :disabled="disabled">
-
-      <v-card-subtitle v-for="out in output" :key="out" :disabled="disabled">
+    <v-card
+      class="overflow-y-auto"
+      height="400"
+      color="#385F73"
+      dark
+      :disabled="disabled"
+    >
+      <v-card-subtitle
+        v-for="(out, index) in output"
+        :key="index"
+        :disabled="disabled"
+      >
         >> {{ out }}
       </v-card-subtitle>
 
@@ -27,10 +38,19 @@ export default {
       "Please input the number of time in seconds between emitting numbers and their frequency",
     output: [],
     disabled: false,
+    input: "",
   }),
   computed: {
     status: function() {
       return this.disabled ? "RESUME" : "HALT";
+    },
+  },
+  methods: {
+    submit: function() {
+      if (this.input) {
+        this.output.push(this.input);
+        this.input = "";
+      }
     },
   },
 };
