@@ -6,10 +6,13 @@
     "serve": "vue-cli-service serve --host localhost",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test": "jest"
+    "test": "jest",
+    "cli": "npx ts-node -O '{\"module\": \"commonjs\"}' src/cli.ts"
   },
   "dependencies": {
+    "@types/inquirer": "^7.3.0",
     "core-js": "^3.6.5",
+    "inquirer": "^7.3.3",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
     "vue-property-decorator": "^8.4.2",

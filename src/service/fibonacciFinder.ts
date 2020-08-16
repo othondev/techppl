@@ -3,7 +3,7 @@ export default class FibonacciFinder {
   interval: number;
   secondsRemain: number;
   numbers: Map<number, number>;
-  timer: number;
+  timer: NodeJS.Timeout;
   constructor(interval: number, outputFunc: Function) {
     this.outputFunc = outputFunc;
     this.interval = interval;
@@ -21,6 +21,7 @@ export default class FibonacciFinder {
     clearInterval(this.timer);
   }
   resumeTimer() {
+    this.pauseTimer()
     this.timer = setInterval(() => this.timerJob(), 1000);
   }
   report() {

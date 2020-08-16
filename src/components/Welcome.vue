@@ -4,8 +4,8 @@
       Welcome to my Developer Coding Test.
     </p>
     <p class="text-center font-weight-medium ">
-      After check if please visit my linkedin or call me I am completly
-      available to answer any question that you could have.
+      After code verification, if please visit my LinkedIn or call me I am
+      completely available to answer any question that you could have.
     </p>
     <p class="text-center font-weight-medium ">
       <a :href="myLinkedin"> My Linkedin </a>
