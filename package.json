@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve --host localhost",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test": "jest"
+    "test": "jest",
+    "cli": "npx ts-node -O '{\"module\": \"commonjs\"}' src/cli.ts"
   },
   "dependencies": {
     "@types/inquirer": "^7.3.0",
