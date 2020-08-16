@@ -13,7 +13,9 @@ export default class FibonacciFinder {
   }
   addNumber(value: number) {
     this.numbers.set(value, (this.numbers.get(value) || 0) + 1);
-    this.outputFunc(`Number ${value} added`);
+    this.outputFunc(
+      `Number ${value} added${isFibonacci(value) ? " =>FIB<=" : ""}`
+    );
   }
   pauseTimer() {
     clearInterval(this.timer);
@@ -36,4 +38,13 @@ export default class FibonacciFinder {
       this.secondsRemain = this.interval;
     }
   }
+}
+
+function isFibonacci(value: number) {
+  const isPerfectSquare = (x: number) =>
+    Math.pow(Math.trunc(Math.sqrt(x)), 2) === x;
+  return (
+    isPerfectSquare(5 * value * value + 4) ||
+    isPerfectSquare(5 * value * value - 4)
+  );
 }

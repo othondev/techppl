@@ -9,7 +9,7 @@ var FibonacciFinder = /** @class */ (function () {
     }
     FibonacciFinder.prototype.addNumber = function (value) {
         this.numbers.set(value, (this.numbers.get(value) || 0) + 1);
-        this.outputFunc("Number " + value + " added");
+        this.outputFunc("Number " + value + " added" + (isFibonacci(value) ? " =>FIB<=" : ""));
     };
     FibonacciFinder.prototype.pauseTimer = function () {
         clearInterval(this.timer);
@@ -37,3 +37,10 @@ var FibonacciFinder = /** @class */ (function () {
     return FibonacciFinder;
 }());
 export default FibonacciFinder;
+function isFibonacci(value) {
+    var isPerfectSquare = function (x) {
+        return Math.pow(Math.trunc(Math.sqrt(x)), 2) === x;
+    };
+    return (isPerfectSquare(5 * value * value + 4) ||
+        isPerfectSquare(5 * value * value - 4));
+}
