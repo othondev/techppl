@@ -13,6 +13,9 @@
     <p class="text-center font-weight-medium ">
       <a :href="myRepository"> Repository here </a>
     </p>
+    <p class="text-center font-weight-medium ">
+      <a :href="questions"> The Test Questions </a>
+    </p>
   </v-container>
 </template>
 
@@ -23,6 +26,7 @@ export default {
   data: () => ({
     myLinkedin: "https://www.linkedin.com/in/othon-ferreira-b0b6a888/",
     myRepository: "https://github.com/othondev/techppl",
+    questions: "https://github.com/othondev/techppl#questions",
   }),
 };
 </script>
