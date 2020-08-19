@@ -37,4 +37,4 @@ For the web interface, we could utilise s3 to provide a static web server (for t
 
 #### What did you think about this coding test - is there anything you’d suggest in order to improve it?
 
-I thought it was great! I think this type of test can effectively discern a developer's practical problem solving skills without being extreme in difficulty.
+I thought it was great! I think this type of test can effectively discern a developer's practical problem solving skills without without being too challenging.
