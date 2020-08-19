@@ -1,11 +1,11 @@
 <template>
   <v-container class="grey lighten-2">
     <p class="text-center font-weight-medium ">
-      Welcome to my Developer Coding Test.
+      Welcome! This is my submission for the Developer Coding Test
     </p>
     <p class="text-center font-weight-medium ">
-      After code verification, if please visit my LinkedIn or call me I am
-      completely available to answer any question that you could have.
+      After examining my code, please visit my LinkedIn or contact me on my mobile
+      - I am always happy and available to answer any questions you may have.
     </p>
     <p class="text-center font-weight-medium ">
       <a :href="myLinkedin"> My Linkedin </a>
