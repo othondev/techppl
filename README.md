@@ -33,7 +33,7 @@ So having created a vue application, CLI application and a test application usin
 
 #### You now need to make your application “production ready”, and deploy it so that it can be used by customers. Please describe the steps you’d need to take for this to happen.
 
-For the web interface, we could utilise s3 to provide a static web server (for this proposal, I merely made use of Github). For the cli app, we should employ a package repository system like npm, linux repository, etc.
+For the web interface, we could utilise AWS s3 bucket to provide a static web server (for this proposal, I merely made use of Github Pages). For the cli app, we should employ a package repository system like npm, linux repository, etc.
 
 #### What did you think about this coding test - is there anything you’d suggest in order to improve it?
 
